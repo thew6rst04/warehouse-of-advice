@@ -1,0 +1,67 @@
+<%- include("partials/header.ejs") %>
+
+<main class="flex flex-col justify-center items-center my-8">
+  <div class="grid grid-cols-12 w-full">
+    <div class="col-span-5">
+      <div
+        class="flex flex-col justify-center items-center text-center my-2 p-4 w-auto h-auto mx-4">
+        <h1 class="text-2xl text-shadow-md">Welcome to Our Website</h1>
+        <p class="font-light">This is a place where are advices gather.</p>
+        <img src="logo.png" alt="logo" class="w-3xs h-3xs" />
+        <p class="mt-4 px-5 text-lg">
+          Explore our collection of advice, tips, and insights to help you
+          navigate life's challenges. Whether you're looking for personal
+          growth, career advice, or relationship tips, we've got you covered.
+        </p>
+      </div>
+    </div>
+    <div class="col-span-7">
+      <div class="flex flex-col justify-center items-center bg-white p-4 rounded-lg shadow-md w-auto mx-4 mb-2 overflow-y-clip">
+        <div
+          class="flex flex-col justify-center items-center text-center p-4 w-auto h-auto mx-4">
+          <h2 class="text-2xl text-shadow-md mt-2">Share Your Advice</h2>
+          <p class="mt-4 px-5 text-lg">
+            If you have any advice for everyone, please share it with us! Your
+            experiences and insights could make a difference in someone’s life.
+          </p>
+          <div class="py-6 w-[50%]">
+            <h3 class="text-3xl text-shadow-md mb-6">Let's get Started!</h3>
+            <a
+              href="/advice"
+              class="bg-blue-600 text-white px-6 py-2 my-2 rounded-lg shadow hover:bg-blue-700 font-semibold"
+              >Send a Advice</a
+            >
+          </div>       
+        </div>
+        <hr class="border-t-2 border-gray-300 my-6 w-full" />
+          <% if (messages.length === 0) { %>
+            <h2 class="text-2xl text-shadow-md">We don't have any advices!</h2>
+            <p><em>*Please share your advice to help others!</em></p>
+            <% } else { %>
+              <h2 class="text-2xl text-shadow-md">Advice today</h2>
+              <% messages.forEach(m => { %>
+              <div class="flex justify-around items-between my-3">
+                  <div class="items-start px-5 my-5">
+                    <p class="text-xl max-w-[500px] wrap-break-word"><em>``<%= m.message %>``</em></p>
+                    <p class="py-2"><strong>~</strong> <%= m.name %> (<%= m.email %>)</p>
+                  </div>
+                    <div class="flex-col justify-center items-center my-5 px-4 gap-4">
+                      <a href="/messages/<%= m.id %>/edit" class="transition-colors duration-300 hover:text-blue-600">
+                        <span class="material-icons">edit</span>
+                      </a>
+                      <form action="/messages/<%= m.id %>?_method=DELETE" method="POST">
+                          <button type="submit" class="transition-colors duration-300 hover:text-red-600">
+                          <span class="material-icons">delete</span>
+                          </button>
+                      </form>
+                  </div>
+              </div>
+             <% }); %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("partials/footer.ejs") %>

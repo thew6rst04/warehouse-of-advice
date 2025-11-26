@@ -1,0 +1,51 @@
+<%- include("header.ejs") %>
+
+<div class="flex items-center justify-center h-screen w-full">
+  <form action="/messages/<%= msg.id %>?_method=PUT" method="POST">
+    <div
+      class="flex flex-col justify-center items-center text-center bg-white border-transparent rounded-2xl shadow-lg p-10">
+      <h2 class="text-xl text-shadow-2xs pb-3.5">What's you wanna change?</h2>
+      <div class="flex gap-4 my-4">
+        <label for="name">Name</label>
+        <input
+          class="border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300 outline-none w-[250px]"
+          type="text"
+          name="name"
+          id="name"
+          value="<%= msg.name %>"
+          required />
+      </div>
+      <div class="flex gap-4 my-4">
+        <label for="email">Email</label>
+        <input
+          class="border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300 outline-none w-[250px]"
+          type="email"
+          name="email"
+          id="email"
+          for="email"
+          value="<%= msg.email %>"
+          required />
+      </div>
+      <div class="flex gap-4 my-4">
+        <label for="message">Advice</label>
+        <textarea
+          class="border-b-2 border-gray-300 focus:border-blue-500 transition-all duration-300 outline-none overflow-hidden w-[250px] h-[75px]"
+          name="message"
+          id="message"
+          for="message"
+          required><%= msg.message %></textarea
+        >
+      </div>
+    <div class="flex justify-between items-center gap-4">
+      <input
+        class="bg-blue-600 text-white px-6 py-2 my-2 rounded-lg shadow hover:bg-blue-700 font-semibold"
+        type="submit"
+        value="Update" />
+        <a class="bg-blue-600 text-white px-6 py-2 my-2 rounded-lg shadow hover:bg-blue-700 font-semibold" href="/">Cancel</a>
+    </div>
+  </form>
+
+  </div>
+</div>
+
+<%- include("footer.ejs") %>

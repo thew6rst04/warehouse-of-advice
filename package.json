@@ -1,0 +1,23 @@
+{
+  "name": "warehouse-of-advices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./public/src/input.css -o ./public/dist/tailwind.css --minify",
+    "start": "nodemon index.js",
+    "watch": "tailwindcss -i ./public/src/input.css -o ./public/dist/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "method-override": "^3.0.0",
+    "tailwindcss": "^4.1.13"
+  }
+}
